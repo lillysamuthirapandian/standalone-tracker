@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "{{TEAMS_APP_ID}}",
+  "packageName": "com.agilysys.standalonetracker",
+  "developer": {
+    "name": "Agilysys",
+    "websiteUrl": "https://www.agilysys.com",
+    "privacyUrl": "https://www.agilysys.com/privacy",
+    "termsOfUseUrl": "https://www.agilysys.com/terms"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Tracker",
+    "full": "Standalone Tracker - Code Delivery Management"
+  },
+  "description": {
+    "short": "Manage code deliveries and generate Excel reports",
+    "full": "A comprehensive tracker application to manage code deliveries, shipments, and generate customizable Excel reports. Track customer deliveries, Salesforce IDs, Jira tickets, and object details all in one place."
+  },
+  "accentColor": "#4472C4",
+  "configurableTabs": [
+    {
+      "configurationUrl": "{{APP_URL}}/config.html",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "tracker",
+      "name": "Tracker",
+      "contentUrl": "{{APP_URL}}/index.html",
+      "websiteUrl": "{{APP_URL}}/index.html",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "{{APP_DOMAIN}}"
+  ],
+  "webApplicationInfo": {
+    "id": "{{AAD_APP_ID}}",
+    "resource": "api://{{APP_DOMAIN}}/{{AAD_APP_ID}}"
+  }
+}

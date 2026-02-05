@@ -10,7 +10,16 @@ import time
 from threading import Lock
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={
+    r"/*": {
+        "origins": [
+            "https://teams.microsoft.com",
+            "https://*.teams.microsoft.com",
+            "https://*.office.com",
+            "*"  # Allow all for development (remove in production)
+        ]
+    }
+})
 
 # Thread lock for file operations
 file_lock = Lock()
@@ -238,6 +247,12 @@ def write_data_to_master(data):
 def index():
     """Serve the index.html file"""
     return send_file('index.html')
+
+
+@app.route('/config.html')
+def config():
+    """Serve the Teams configuration page"""
+    return send_file('teams/config.html')
 
 
 # ============ USER MANAGEMENT ROUTES ============
